@@ -1,0 +1,12 @@
+<br/>
+<h3>Search Results for Candidate Tweets</h3>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    {% if candidate_topics %}
+        {% for topic in candidate_topics %}
+        <p class="card-text">{{ topic }}</p>
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+<br/>
+<h3>Search Candidate Tweets</h3>
+<form action="/topics" method="post">
+    <input type="text" name="topics" placeholder="topics">
+    <input type="submit" value="topics">
+</form>
+<br/>
+<h3>Candidates</h3>
+{% for user in users %}
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a class="btn btn-primary" href="{{ url_for('user', name=user.name) }}" role="button">{{ user.name }}</a>
+ </div>
+{% endfor %}
+
+<br/>
+<h3>Candidates Tweeting about US Trending Topics</h3>
+{% if candidate_trends %}
+    {% for trend in candidate_trends %}
+        <li>{{ trend }}</li>
+    {% endfor %}
+    {% else %}
+    <p>No trending</p>
+{% endif %}
+<br/>
+<h3>Candidates Tweeting about Each Others</h3>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    {% if candidate_names %}
+        {% for trend in candidate_names %}
+        <p class="card-text">{{ trend }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    </div>
