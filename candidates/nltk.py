@@ -5,6 +5,7 @@ from nltk.tokenize import sent_tokenize # Sentence Tokenizer
 from nltk.tokenize import word_tokenize # Word Tokenizer
 from nltk.probability import FreqDist
 from .models import *
+from .twitter import *
 
 stop_words = ['i','me','my','myself','we''our','ours','ourselves',
             'you','your','yours','yourself','yourselves','he','him','his','himself',
