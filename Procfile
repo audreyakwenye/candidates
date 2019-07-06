@@ -1,1 +1,1 @@
-web: gunicorn twitter:APP -t 120 
+web: gunicorn candidates:APP -t 120 
