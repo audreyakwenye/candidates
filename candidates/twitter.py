@@ -2,10 +2,10 @@ import tweepy
 from .models import DB, Tweet, User
 from decouple import config
 
-TWITTER_AUTH = tweepy.OAuthHandler(config('TWITTER_CONSUMER_KEY'),
-                                    config('TWITTER_CONSUMER_SECRET'))
-TWITTER_AUTH.set_access_token(config('TWITTER_ACCESS_TOKEN'),
-                                config('TWITTER_ACCESS_TOKEN_SECRET'))
+TWITTER_AUTH = tweepy.OAuthHandler(config(TWITTER_CONSUMER_KEY),
+                                    config(TWITTER_CONSUMER_SECRET))
+TWITTER_AUTH.set_access_token(config(TWITTER_ACCESS_TOKEN),
+                                config(TWITTER_ACCESS_TOKEN_SECRET))
 TWITTER = tweepy.API(TWITTER_AUTH)
 
 def add_or_update_user(username):
