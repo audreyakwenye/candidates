@@ -7,6 +7,8 @@ from nltk.probability import FreqDist
 from .models import *
 from .twitter import *
 
+nltk.download('punkt')
+
 stop_words = ['i','me','my','myself','we''our','ours','ourselves',
             'you','your','yours','yourself','yourselves','he','him','his','himself',
             'she','her','hers','herself','it','its','itself','they','them','their',
