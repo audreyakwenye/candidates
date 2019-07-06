@@ -22,6 +22,11 @@
     <p>No trending</p>
 {% endif %}
 <br/>
+<h3>Candidates Top 5 Words</h3>
+    {% for word in top_word %}
+        <li>{{ word }}</li>
+    {% endfor %}
+<br/>
 <h3>Candidates Tweeting about Each Others</h3>
 <div class="card" style="width: 18rem;">
     <div class="card-body">

@@ -16,7 +16,8 @@ def create_app():
     @app.route('/')
     def root():
         users = User.query.all()
-        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump']
+        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'sethmoulton', 
+                  'JoeSestak', 'JayInslee', 'GovBillWeld', 'AndrewYang']
         for name in names:
                 add_or_update_user(name)
         top_word = top_words(names)
@@ -30,7 +31,8 @@ def create_app():
     @app.route('/topics', methods=['POST'])
     def topics():
         topics = request.values['topics']
-        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump']
+        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'sethmoulton', 
+                  'JoeSestak', 'JayInslee', 'GovBillWeld', 'AndrewYang']
         candidate_topics = compare_topics(names, topics)
         return render_template('topics.html', title='Trends', topics=topics, 
                         candidate_topics=candidate_topics)
