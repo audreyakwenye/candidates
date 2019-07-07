@@ -56,6 +56,10 @@ def create_app():
         DB.drop_all()
         DB.create_all()
         return render_template('home.html', title='DB Reset!', users=[])
+
+    @app.route('/index')
+    def index():
+        return render_template('index.html')
         
     return app
 

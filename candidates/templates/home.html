@@ -1,14 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
 <br/>
 <h3>Search Candidate Tweets</h3>
-<form action="/topics" method="post">
-    <input type="text" name="topics" placeholder="topics">
-    <input type="submit" value="topics">
+<form method="post" class="searchform search-form" action="/topics">
+    <div class="form-group">
+        <input type="text" value="" name="topics" class="form-control" placeholder="topics">
+    </div>
+    <button type="submit" class="btn">Search Topics</button>
 </form>
 <br/>
 <h3>Candidates</h3>
 {% for user in users %}
 <div class="btn-group" role="group" aria-label="Basic example">
-    <a class="btn btn-primary" href="{{ url_for('user', name=user.name) }}" role="button">{{ user.name }}</a>
+    <a class="btn" href="{{ url_for('user', name=user.name) }}" role="button">{{ user.name }}</a>
  </div>
 {% endfor %}
 
@@ -23,9 +27,15 @@
 {% endif %}
 <br/>
 <h3>Candidates Top 5 Words</h3>
-    {% for word in top_word %}
-        <li>{{ word }}</li>
-    {% endfor %}
+{% if top_word  %}
+{% for word in top_word %}
+<div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <p class="card-text">{{ word }}</p>
+        </div>
+        </div>
+{% endfor %}
+{% endif %}
 <br/>
 <h3>Candidates Tweeting about Each Others</h3>
 <div class="card" style="width: 18rem;">
@@ -37,3 +47,5 @@
         {% endif %}
     </div>
     </div>
+{% endblock %}
+

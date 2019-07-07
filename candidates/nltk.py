@@ -22,7 +22,7 @@ stop_words = ['i','me','my','myself','we''our','ours','ourselves',
             'why','how','all','any','both','each','few','more','most','other','some',
             'such','no','nor','not','only','own','same','so','than','too','very',
             's','t','can','will','just','don','should','now','http','https','we','our', 'm', 't','us',
-            're','people','like','love','country']
+            're','people','like','love','country','amp']
 
 table = str.maketrans('','', string.punctuation)
 

@@ -1,0 +1,437 @@
+{% extends 'base.html' %}
+
+{% block content %}
+			<section class="page_slider ds">
+				<span class="flexslider-overlay"></span>
+				<img src="static/images/slide01.jpg" alt="">
+				<div class="container">
+					<div class="divider-15 d-none d-lg-block d-xl-none"></div>
+					<div class="row align-items-center">
+						<div class="col-md-7">
+							<div class="intro_layers_wrapper">
+								<div class="intro_layers">
+									<div class="intro_layer">
+										<h6 class="intro_before_featured_word animate" data-animation="fadeInUp">
+											HHA Guide
+										</h6>
+										<h2 class="intro_featured_word animate" data-animation="fadeInUp">
+											Your Home Healthcare Agency Guide
+										</h2>
+									</div>
+									<form role="search" method="get" class="search-form search-course animate" action="/" data-animation="fadeInUp">
+										<div class="form-group has-placeholder">
+											<label for="search-form-widget">
+												<span class="screen-reader-text">Search for:</span>
+											</label>
+											<i class="fa fa-search"></i>
+											<input type="search" id="search-form-widget" class="search-field form-control" placeholder="" value="" name="search">
+											<button type="submit" class="search-submit btn btn-maincolor">Find courses</button>
+										</div>
+									</form>
+								</div> <!-- eof .intro_layers -->
+							</div> <!-- eof .intro_layers_wrapper -->
+						</div> <!-- eof .col-* -->
+						<div class="col-md-5">
+							<div class="intro_layers_wrapper icon-layer">
+								<div class="intro_layers">
+									<a href="course-categories.html" class="icon-box text-center bordered rounded animate" data-animation="moveFromLeft">
+										<p>
+											Administrator Certifications
+										</p>
+									</a>
+									<a href="course-categories.html" class="icon-box text-center bordered rounded animate" data-animation="moveFromLeft">
+										<p>
+											Human Resources
+										</p>
+									</a>
+								</div> <!-- eof .intro_layers -->
+								<div class="intro_layers">
+									<a href="course-categories.html" class="icon-box text-center bordered rounded animate" data-animation="moveFromLeft">
+										<p>
+											Policies and Procedures
+										</p>
+									</a>
+									<a href="course-categories.html" class="icon-box text-center bordered rounded animate" data-animation="moveFromLeft">
+										<p>
+											Marketing
+										</p>
+									</a>
+								</div> <!-- eof .intro_layers -->
+							</div>
+						</div> <!-- eof .col-* -->
+					</div><!-- eof .row -->
+				</div><!-- eof .container-fluid -->
+			</section>
+
+			<section class="s-py-40 ds gradient-background d-none d-md-block" id="feature">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-4">
+							<div class="media align-items-center justify-content-center">
+
+								<div class="media-body">
+									<h6>
+										Online Certifications
+									</h6>
+									<p>
+										Stay compliant without leaving your office
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-4">
+							<div class="media align-items-center justify-content-center">
+
+								<div class="media-body">
+									<h6>
+										Online Certifications
+									</h6>
+									<p>
+										Stay compliant without leaving your office
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-4">
+							<div class="media align-items-center justify-content-center">
+
+
+								<div class="media-body">
+									<h6>
+										HHA Guide
+									</h6>
+									<p>
+										Your Home Healthcare Agency Guide 
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="ls s-pt-55 s-pb-30 s-pt-lg-95 s-pb-lg-70" id="courses">
+				<div class="container">
+					<div class="divider-3"></div>
+					<div class="row">
+						<div class="col-lg-12">
+							<h6 class="special-heading fw-300 text-center">HHA Guide</h6>
+							<h2 class="text-center">Find Courses</h2>
+							<div class="row isotope-wrapper c-mb-30" data-filters=".course-filters">
+								{% if course_list %}
+									{% for course in course_list %}
+								<div class="col-12 col-md-6 col-lg-4 {{ course.category }}">
+									<div class="course-flip h-100 ">
+										<div class="course-front rounded bordered">
+											<div class=" vertical-item content-padding">
+												<div class="item-media rounded-top">
+														{% if course.figure %}
+														<img src="#" alt="{{ course.content }}" />
+													{% endif %}
+												</div>
+												<div class="item-content">
+													<h6 class="course-title">
+														<a href="single-course.html">{{ course.title }}</a>
+													</h6>
+													<p>{{ course.pub_time }}</p>
+													<div class="tagcloud">
+														<a href="#" class="tag-cloud-link">
+															{{ course.category }}
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="course-back rounded vertical-item content-padding ds">
+											<div class="item-content">
+												<h6 class="course-title">
+														<a href="#">{{ course.title }}</a>
+												</h6>
+												<p>
+														{{ course.short_description }}
+												</p>
+
+												<div class="divider-48"></div>
+												<a href="#" class="btn btn-maincolor">Start now</a>
+												<a href="#" class="btn btn-maincolor">Start now</a>
+											</div>
+										</div>
+									</div>
+								</div>
+									{% endfor %}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="ds s-py-60 s-py-lg-100 call-to-action s-parallax s-overlay text-center text-lg-left" id="action">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xl-6">
+							<h6 class="special-heading fw-300">Personable Virtual Assistants</h6>
+							<h2>Don't just take our</h2>
+							<div class="divider-35 d-none d-md-block"></div>
+							<p class="mt-20 mb-20">
+								We are proud to say that since our opening in ’98 we have been serving our visitors in the best possible way. In Hotel Nanovi, where each one of
+							</p>
+							<div class="divider-43 d-none d-md-block"></div>
+							<a href="#" class="btn btn-maincolor">Find Courses</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="ls s-pt-60 s-pb-10 s-pt-lg-100 s-pb-lg-30 c-gutter-10 c-mb-20 category-section" id="categories">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h6 class="special-heading fw-300 text-center">Empower Yourself</h6>
+							<h2 class="text-center">Popular categories</h2>
+						</div>
+						<div class="divider-10 d-none d-lg-block"></div>
+						<div class="col-lg-4 col-sm-6 animate" data-animation="fadeInUp">
+							<div class="icon-box text-center">
+								<div class="color-main icon-styled fs-77">
+									<i class="icon-m-technology" aria-hidden="true"></i>
+								</div>
+								<h6 class="fw-700">
+									<a href="single-course.html">Certifications</a>
+								</h6>
+								<p>
+									Online Administrator Certifications and Renewals
+								</p>
+							</div>
+							<span class="media-links">
+								<a class="abs-link" title="" href="course-categories.html"></a>
+							</span>
+						</div><!-- .col-* -->
+						<div class="col-lg-4 col-sm-6 animate" data-animation="fadeInUp">
+
+							<div class="icon-box text-center">
+								<div class="color-main icon-styled fs-77">
+									<i class="icon-m-language" aria-hidden="true"></i>
+								</div>
+								<h6 class="fw-700">
+									<a href="single-course.html">Marketing</a>
+								</h6>
+								<p>
+									Phasellus porttitor justo elit, ac tempus ligula sodales
+								</p>
+							</div>
+							<div class="media-links">
+								<a class="abs-link" title="" href="course-categories.html"></a>
+							</div>
+						</div><!-- .col-* -->
+						<div class="col-lg-4 col-sm-6 animate" data-animation="fadeInUp">
+
+							<div class="icon-box text-center">
+								<div class="color-main icon-styled fs-77">
+									<i class="icon-m-science" aria-hidden="true"></i>
+								</div>
+
+								<h6 class="fw-700">
+									<a href="single-course.html">Science</a>
+								</h6>
+
+								<p>
+									Nunc vehicula metus et massa tincidunt ultrices tincidunt
+								</p>
+
+
+							</div>
+							<div class="media-links">
+								<a class="abs-link" title="" href="course-categories.html"></a>
+							</div>
+						</div><!-- .col-* -->
+						<div class="col-lg-4 col-sm-6 animate" data-animation="fadeInUp">
+
+							<div class="icon-box text-center">
+								<div class="color-main icon-styled fs-77">
+									<i class="icon-m-humanities" aria-hidden="true"></i>
+								</div>
+
+								<h6 class="fw-700">
+									<a href="single-course.html">Humanities</a>
+								</h6>
+
+								<p>
+									Curabitur pretium elit mi, non sollicitudin massa ac
+								</p>
+							</div>
+							<div class="media-links">
+								<a class="abs-link" title="" href="course-categories.html"></a>
+							</div>
+						</div><!-- .col-* -->
+						<div class="col-lg-4 col-sm-6 animate" data-animation="fadeInUp">
+
+							<div class="icon-box text-center">
+								<div class="color-main icon-styled fs-77">
+									<i class="icon-m-business" aria-hidden="true"></i>
+								</div>
+
+								<h6 class="fw-700">
+									<a href="single-course.html">Business</a>
+								</h6>
+
+								<p>
+									In porta urna risus, ut imperdiet nisl condimentum lobortis
+								</p>
+							</div>
+							<div class="media-links">
+								<a class="abs-link" title="" href="course-categories.html"></a>
+							</div>
+						</div><!-- .col-* -->
+						<div class="col-lg-4 col-sm-6 animate" data-animation="fadeInUp">
+
+							<div class="icon-box text-center">
+								<div class="color-main icon-styled fs-77">
+									<i class="icon-m-marketing" aria-hidden="true"></i>
+								</div>
+
+								<h6 class="fw-700">
+									<a href="single-course.html">Marketing</a>
+								</h6>
+
+								<p>
+									Sed pellentesque pulvinar arcu ac congue. Sed sed est nec
+								</p>
+
+
+							</div>
+							<div class="media-links">
+								<a class="abs-link" title="" href="course-categories.html"></a>
+							</div>
+						</div><!-- .col-* -->
+						<div class="d-none d-lg-block divider-20"></div>
+					</div>
+
+				</div>
+			</section>
+
+			<section id="section_testimonials" class="s-pt-60 s-pb-55 s-pt-lg-100 s-pb-lg-95 ls ms">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="testimonials-slider owl-carousel" data-autoplay="true" data-loop="true" data-responsive-lg="1" data-responsive-md="1" data-responsive-sm="1" data-nav="false" data-dots="false">
+								<div class="quote-item">
+									<div class="quote-image">
+										<img src="images/team/testimonials_01.jpg" alt="">
+									</div>
+									<p>
+										<em class="big">
+											I met so many interesting people over the last couple of months, who proved to stay ahead of the modern technologies in the world of branding and web design. I loved working with you all, thank you so much!
+										</em>
+									</p>
+									<img src="images/quote.png" alt="">
+									<h6 class="quote-meta fw-700">
+										Keith M. Jordan
+									</h6>
+									<p>Applied Researcher</p>
+								</div>
+								<div class="quote-item">
+									<div class="quote-image">
+										<img src="images/team/testimonials_02.jpg" alt="">
+									</div>
+									<p>
+										<em class="big">
+											I am inspired by the UN Declaration that “everyone is entitled to a free education”. We are committed to equality and access to education irrespective of gender, geography, economic status or any other barriers to access.
+										</em>
+									</p>
+									<img src="images/quote.png" alt="">
+									<h6 class="quote-meta fw-700">
+										Ron M. Martin
+									</h6>
+									<p>Applied Researcher</p>
+								</div>
+								<div class="quote-item">
+									<div class="quote-image">
+										<img src="images/team/testimonials_03.jpg" alt="">
+									</div>
+									<p>
+										<em class="big">
+											I am drive by our belief in the power of free education and skills training to change people’s lives for the better and are passionate about providing an overall learning experience that meets their needs and helps them to achieve life goals.
+										</em>
+									</p>
+									<img src="images/quote.png" alt="">
+									<h6 class="quote-meta fw-700">
+										Thelma R. Furman
+									</h6>
+									<p>Autor courses</p>
+								</div>
+
+							</div><!-- .testimonials-slider -->
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="ds ms s-pt-60 s-pb-20 s-pt-lg-125 s-pb-lg-130 c-gutter-100 c-mb-40 c-mb-md-0 video-section text-center text-md-left" id="video">
+				<div class="cover-image s-cover-left"></div><!-- half image background element -->
+				<div class="container">
+					<div class="divider-45 d-none d-lg-block"></div>
+					<div class="row align-items-center">
+						<div class="col-md-6">
+							<div class="item-media post-thumbnail">
+								<div class="embed-responsive embed-responsive-3by2">
+									<a href="https://www.youtube.com/embed/bo316DYYy80" class="embed-placeholder">
+										<img src="images/video-image.jpg" alt="">
+									</a>
+								</div>
+							</div><!-- .post-thumbnail -->
+						</div>
+						<div class="col-md-6">
+							<div class="item-content">
+								<h6 class="special-heading fw-300">Personable Virtual Assistants</h6>
+								<h2>Don't just take our</h2>
+								<div class="d-none d-lg-block divider-38"></div>
+								<p class="mt-20">We are proud to say that since our opening in ’98 we have been serving our visitors in the best possible way. In Hotel Nanovi, where </p>
+								<div class="d-none d-lg-block divider-43"></div>
+								<a href="#" class="btn btn-maincolor">Find courses</a>
+							</div>
+						</div>
+					</div>
+					<div class="divider-40 d-none d-md-block"></div>
+				</div>
+			</section>
+
+			<section class="ls s-pt-60 s-pb-50 s-py-lg-100 partners-section" id="partners">
+				<div class="container">
+					<div class="row">
+						<div class="col-4 col-md-2">
+							<a href="#">
+								<img src="images/partners/06.jpg" alt="">
+							</a>
+						</div>
+						<div class="col-4 col-md-2">
+							<a href="#">
+								<img src="images/partners/05.jpg" alt="">
+							</a>
+						</div>
+						<div class="col-4 col-md-2">
+							<a href="#">
+								<img src="images/partners/04.jpg" alt="">
+							</a>
+						</div>
+						<div class="col-4 col-md-2">
+							<a href="#">
+								<img src="images/partners/03.jpg" alt="">
+							</a>
+						</div>
+						<div class="col-4 col-md-2">
+							<a href="#">
+								<img src="images/partners/02.jpg" alt="">
+							</a>
+						</div>
+						<div class="col-4 col-md-2">
+							<a href="#">
+								<img src="images/partners/01.jpg" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+{% endblock %}
