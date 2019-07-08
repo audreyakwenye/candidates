@@ -3,7 +3,7 @@ from decouple import config
 from flask import Flask, render_template, request
 
 from .models import DB, User
-from .twitter import add_or_update_user, get_trending, compare_trending, compare_topics, compare_names
+from .twitter import add_user, update_user, get_trending, compare_trending, compare_topics, compare_names
 from .nltk import top_words
 
 def create_app():
@@ -19,7 +19,7 @@ def create_app():
         names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'sethmoulton', 
                   'JoeSestak', 'JayInslee', 'GovBillWeld', 'AndrewYang', 'MichaelBennet']
         for name in names:
-                add_or_update_user(name)
+                update_user(name)
         top_word = top_words(names)
         candidate_names = compare_names(names)
         trends = get_trending()
@@ -56,6 +56,14 @@ def create_app():
         DB.drop_all()
         DB.create_all()
         return render_template('home.html', title='DB Reset!', users=[])
+
+    @app.route('/add')
+    def add():
+        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'sethmoulton', 
+                  'JoeSestak', 'JayInslee', 'GovBillWeld', 'AndrewYang', 'MichaelBennet']
+        for name in names:
+                add_user(name)
+        return render_template('home.html', title='Added!', users=[])
 
     @app.route('/index')
     def index():

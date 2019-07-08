@@ -8,7 +8,7 @@ TWITTER_AUTH.set_access_token(config('TWITTER_ACCESS_TOKEN'),
                                 config('TWITTER_ACCESS_TOKEN_SECRET'))
 TWITTER = tweepy.API(TWITTER_AUTH)
 
-def add_or_update_user(username):
+def add_user(username):
     """Add or update a user *and* their Tweets, error if no/private user."""
     try:
         twitter_user = TWITTER.get_user(username)
@@ -18,7 +18,28 @@ def add_or_update_user(username):
         # We want as many recent non-retweet/reply statuses as we can get
         tweets = twitter_user.timeline(
             count=200, exclude_replies=True, include_rts=False,
-            tweet_mode='extended')
+            tweet_mode='extended', since_id=db_user.newest_tweet_id)
+        if tweets:
+            db_user.newest_tweet_id = tweets[0].id
+        for tweet in tweets:
+            db_tweet = Tweet(id=tweet.id, text=tweet.full_text[:500], time=tweet.created_at)
+            db_user.tweets.append(db_tweet)
+            DB.session.add(db_tweet)
+    except Exception as e:
+        print('Error processing {}: {}'.format(username, e))
+        raise e
+    else:
+        DB.session.commit()
+
+def update_user(username):
+    """Add or update a user *and* their Tweets, error if no/private user."""
+    try:
+        twitter_user = TWITTER.get_user(username)
+        db_user = User.query.get(twitter_user.id)
+        # We want as many recent non-retweet/reply statuses as we can get
+        tweets = twitter_user.timeline(
+            count=200, exclude_replies=True, include_rts=False,
+            tweet_mode='extended', since_id=db_user.newest_tweet_id)
         if tweets:
             db_user.newest_tweet_id = tweets[0].id
         for tweet in tweets:
