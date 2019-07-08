@@ -17,6 +17,44 @@
 {% endfor %}
 
 <br/>
+
+<h3>Candidates Top 5 Words</h3>
+<div class="row">
+{% if top_word  %}
+{% for word in top_word %}
+<div class="col-sm-6">
+    <div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ word[0] }}</h5>
+        {% for line in word[1] %}
+        <p class="card-text">{{ line }}</p>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
+<br/>
+<h3>Candidates Tweeting about Each Others</h3>
+<div class="row">
+        {% if candidate_names %}
+        {% for trend in candidate_names %}
+        <div class="col-sm-6">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ trend[0] }}</h5>
+                <p class="card-text">{{ trend[1] }}</p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        </div>
+            
+
+<br/>
 <h3>Candidates Tweeting about US Trending Topics</h3>
 {% if candidate_trends %}
     {% for trend in candidate_trends %}
@@ -26,29 +64,15 @@
     <p>No trending</p>
 {% endif %}
 <br/>
-<h3>Candidates Top 5 Words</h3>
-{% if top_word  %}
-{% for word in top_word %}
-<div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <p class="card-text">{{ word[0] }}</p>
-            {% for line in word[1] %}
-                <li>{{ line }}</li>
+<div class="widget widget_tag_cloud">
+        <h3 class="widget-title">US Trending</h3>
+        <div class="tagcloud">
+            {% for trend in trends %}
+            <a class="tag-cloud-link">
+                {{ trend }}
+            </a>
             {% endfor %}
         </div>
-        </div>
-{% endfor %}
-{% endif %}
-<br/>
-<h3>Candidates Tweeting about Each Others</h3>
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-    {% if candidate_names %}
-        {% for trend in candidate_names %}
-        <p class="card-text">{{ trend[0] }} - {{ trend[1]}}</p>
-        {% endfor %}
-        {% endif %}
-    </div>
     </div>
 {% endblock %}
 
