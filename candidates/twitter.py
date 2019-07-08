@@ -18,7 +18,7 @@ def add_or_update_user(username):
         # We want as many recent non-retweet/reply statuses as we can get
         tweets = twitter_user.timeline(
             count=200, exclude_replies=True, include_rts=False,
-            tweet_mode='extended', since_id=db_user.newest_tweet_id)
+            tweet_mode='extended')
         if tweets:
             db_user.newest_tweet_id = tweets[0].id
         for tweet in tweets:
