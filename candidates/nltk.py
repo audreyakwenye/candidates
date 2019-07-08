@@ -45,5 +45,6 @@ def top_words(names):
       user = User.query.filter(User.name == name).one()
       tweets = [tweet.text for tweet in user.tweets]
       results = get_words(tweets)
-      top_word.extend((name, results))
+      total = (name, results)
+      top_word.append(total)
     return(top_word)

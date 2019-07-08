@@ -20,7 +20,7 @@
 <h3>Candidates Tweeting about US Trending Topics</h3>
 {% if candidate_trends %}
     {% for trend in candidate_trends %}
-        <li>{{ trend }}</li>
+        <li>{{ trend[0] }} - {{ trend[1] }}</li>
     {% endfor %}
     {% else %}
     <p>No trending</p>
@@ -31,7 +31,10 @@
 {% for word in top_word %}
 <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <p class="card-text">{{ word }}</p>
+            <p class="card-text">{{ word[0] }}</p>
+            {% for line in word[1] %}
+                <li>{{ line }}</li>
+            {% endfor %}
         </div>
         </div>
 {% endfor %}
@@ -42,7 +45,7 @@
     <div class="card-body">
     {% if candidate_names %}
         {% for trend in candidate_names %}
-        <p class="card-text">{{ trend }}</p>
+        <p class="card-text">{{ trend[0] }} - {{ trend[1]}}</p>
         {% endfor %}
         {% endif %}
     </div>

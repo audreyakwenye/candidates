@@ -49,7 +49,8 @@ def compare_trending(names, trends):
         for trend in trends:
           if trend in tweet:
             i = tweet
-            topic_tweets.extend((name, i))
+            total = (name, i)
+            topic_tweets.append(total)
     return(topic_tweets)
 
 
@@ -61,7 +62,8 @@ def compare_topics(names, topics):
       for tweet in tweets:
         if topics in tweet:
           i = tweet
-          topic_tweets.extend((name, i))
+          total = (name, i)
+          topic_tweets.append(total)
     return(topic_tweets)
 
 def compare_names(names):
@@ -73,7 +75,8 @@ def compare_names(names):
         for name1 in names:
           if name1 in tweet:
             i = tweet
-            topic_tweets.extend((name, i))
+            total = (name, i)
+            topic_tweets.append(total)
     return(topic_tweets)
 
 
