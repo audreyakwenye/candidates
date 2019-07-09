@@ -16,6 +16,26 @@
  </div>
 {% endfor %}
 
+<h3>Candidates Top 5 Words</h3>
+<div class="row">
+{% if top_word  %}
+{% for word in top_word %}
+<div class="col-sm-6">
+    <div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ word[0] }}</h5>
+        <p class="card-text">
+        {% for line in word[1] %}
+            <li>{{ line }}</li>
+            {% endfor %}
+        </p>
+    </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
 <br/>
 <h3>Candidates Tweeting about US Trending Topics</h3>
 {% if candidate_trends %}
@@ -36,26 +56,6 @@
             {% endfor %}
         </div>
     </div>
-
-<br/>
-<h3>Candidates Top 5 Words</h3>
-<div class="row">
-{% if top_word  %}
-{% for word in top_word %}
-<div class="col-sm-6">
-    <div class="card">
-    <div class="card-body">
-        <h5 class="card-title">{{ word[0] }}</h5>
-        {% for line in word[1] %}
-        <p class="card-text">{{ line }}</p>
-        {% endfor %}
-    </div>
-    </div>
-</div>
-{% endfor %}
-{% endif %}
-</div>
-
 <br/>
 <h3>Candidates Tweeting about Each Others</h3>
 <div class="row">

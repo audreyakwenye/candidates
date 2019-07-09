@@ -28,6 +28,7 @@ table = str.maketrans('','', string.punctuation)
 
 def get_words(tweets):
         cleaned_listings = []
+        words1 = []
         for tweet in tweets:
             for i, listing in enumerate(tweets):
                 tokens = word_tokenize(listing)
@@ -37,7 +38,11 @@ def get_words(tweets):
                 words = [w for w in alphabetic if not w in stop_words]
                 cleaned_listings.extend(words)
                 fdist = FreqDist(cleaned_listings)
-            return(fdist.most_common(5))
+            for word, frequency in fdist.most_common(5):
+                result = ('{} - {}'.format(word, frequency))
+                words1.append(result)
+            return(words1)
+        
 
 def top_words(names):
     top_word = []
