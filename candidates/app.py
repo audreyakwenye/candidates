@@ -16,8 +16,8 @@ def create_app():
     @app.route('/')
     def root():
         users = User.query.all()
-        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'sethmoulton', 
-                  'JoeSestak', 'JayInslee', 'GovBillWeld', 'AndrewYang', 'MichaelBennet']
+        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'CoryBooker', 
+                'PeteButtigieg', 'amyklobuchar', 'AndrewYang', 'JulianCastro']
         for name in names:
                 update_user(name)
         top_word = top_words(names)
@@ -31,8 +31,8 @@ def create_app():
     @app.route('/topics', methods=['POST'])
     def topics():
         topics = request.values['topics']
-        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'sethmoulton', 
-                  'JoeSestak', 'JayInslee', 'GovBillWeld', 'AndrewYang', 'MichaelBennet']
+        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'CoryBooker', 
+                'PeteButtigieg', 'amyklobuchar', 'AndrewYang', 'JulianCastro']
         candidate_topics = compare_topics(names, topics)
         return render_template('topics.html', title='Trends', topics=topics, 
                         candidate_topics=candidate_topics)
@@ -59,8 +59,8 @@ def create_app():
 
     @app.route('/add')
     def add():
-        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'sethmoulton', 
-                  'JoeSestak', 'JayInslee', 'GovBillWeld', 'AndrewYang', 'MichaelBennet']
+        names = ['ewarren', 'JoeBiden', 'KamalaHarris', 'BernieSanders', 'realDonaldTrump', 'BetoORourke', 'CoryBooker', 
+                'PeteButtigieg', 'amyklobuchar', 'AndrewYang', 'JulianCastro']
         for name in names:
                 add_user(name)
         return render_template('home.html', title='Added!', users=[])

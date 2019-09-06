@@ -4,6 +4,17 @@ from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize # Sentence Tokenizer
 from nltk.tokenize import word_tokenize # Word Tokenizer
 from nltk.probability import FreqDist
+import numpy as np
+import gensim
+import os
+import re
+
+from gensim.utils import simple_preprocess
+from gensim import corpora
+
+from gensim.models.ldamulticore import LdaMulticore
+
+import pandas as pd
 from .models import *
 from .twitter import *
 
@@ -53,3 +64,15 @@ def top_words(names):
       total = (name, results)
       top_word.append(total)
     return(top_word)
+
+
+def tokenize(text):
+    return [token for token in simple_preprocess(text) if token not in stop_words]
+
+def doc_stream(path):
+  tokens = []
+  for f in path:
+    token = tokenize(str(f))
+    tokens.append(token)
+  return tokens
+

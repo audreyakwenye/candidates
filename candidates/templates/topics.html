@@ -17,5 +17,25 @@
         {% endfor %}
         {% endif %}
       </div>
-      
+<br/>
+<h3>Candidate Topics</h3>
+<div class="row">
+        {% if candidate_topics_words %}
+        {% for topic in candidate_topics_words %}
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ topic[0] }}</h5>
+              <p class="card-text">
+                {% for t in topic[1] %}
+                <li>{{ t }}</li>
+                {% endfor %}
+              </p>
+            
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>    
 {% endblock %}
